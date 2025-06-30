@@ -27,6 +27,10 @@ app = FastAPI(
 
 pipeline = joblib.load("pipeline.joblib")
 
+@app.get("/")
+def home():
+    return {'Universidad EIA': 'MLOps'}
+
 @app.post("/predict")
 def predict_salary(req: SalaryRequest):
     df = pd.DataFrame([req.dict()])
